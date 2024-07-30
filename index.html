@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+    <title>Frontend Mentor | Rock, Paper, Scissors</title>
+</head>
+<body class="tracking-[1px] font-barlow bg-[radial-gradient(circle,_#1f3756_0%,_#141539_100%)] text-white min-h-screen flex flex-col items-center p-4 tracking-tight relative">
+    <header class="flex justify-between items-center mb-14 mt-4 p-3 w-[45%] border-2 rounded-lg border-[#5f6d87]">
+        <div class="names">
+            <p class="text-3xl font-bold leading-none">ROCK</p>
+            <p class="text-3xl font-bold leading-none">PAPER</p>
+            <p class="text-3xl font-bold leading-none">SCISSORS</p>
+        </div>
+        <div class="flex justify-center items-center bg-white text-black px-6 py-2 rounded-lg">
+            <div class="text-center">
+                <p class="text-ms font-semibold text-blue-500">SCORE</p>
+                <p class="text-5xl font-bold text-gray-600" id="score">0</p>
+            </div>
+        </div>
+    </header>
+    <!-- main -->
+    <main class="flex items-center justify-center text-center max-w-[400px] mx-auto">
+        <!-- Main div -->
+        <div class="game grid gap-8 grid-cols-2 relative">
+            <!-- Triangle Background -->
+            <img class="absolute translate-x-[30px] translate-y-[60px] z-[-1]" src="/images/bg-triangle.svg" alt="Background Triangle" />
+            <!-- First -->
+            <div class="pr-4">
+                <button data-hand="rock" data-border-color="#dd405d" data-box-shadow="inset 0px 8px rgba(63,55,55,0.1), 0px 8px #b21f3a" class="RPS bg-white hover:scale-110 transition-transform duration-300 w-40 h-40 flex items-center justify-center rounded-full shadow-[inset_0px_8px_rgba(63,55,55,0.1),_0px_8px_#b21f3a] border-[16px] border-[#dd405d]">
+                    <img src="/images/icon-rock.svg" alt="Rock" />
+                </button>
+            </div>
+            <!-- Second -->
+            <div class="pl-4">
+                <button data-hand="scissors" data-border-color="#5671f5" data-box-shadow="inset 0px 8px rgba(63,55,55,0.1), 0px 8px #0e34f1" class="RPS bg-white hover:scale-110 transition-transform duration-300 w-40 h-40 flex items-center justify-center rounded-full shadow-[inset_0px_8px_rgba(63,55,55,0.1),_0px_8px_#0e34f1] border-[16px] border-[#5671f5]">
+                    <img src="/images/icon-scissors.svg" alt="Scissors" />
+                </button>
+            </div>
+            <!-- Third -->
+            <div class="col-span-2 flex justify-center">
+                <button data-hand="paper" data-border-color="#e9a216" data-box-shadow="inset 0px 8px rgba(63,55,55,0.1), 0px 8px #b27c10" class="RPS bg-white hover:scale-110 transition-transform duration-300 w-40 h-40 flex items-center justify-center rounded-full shadow-[inset_0px_8px_rgba(63,55,55,0.1),_0px_8px_#b27c10] border-[16px] border-[#e9a216]">
+                    <img src="/images/icon-paper.svg" alt="Paper" />
+                </button>
+            </div>
+        </div>
+        <!-- Win or Lose section -->
+        <div class="win-or-lose flex gap-12 items-center justify-center hidden">
+            <div class="first-div flex flex-col items-center">
+                <p class="text-xl font-bold">You Picked</p>
+                <div class="i-win bg-white mt-12 w-48 h-48 flex items-center justify-center rounded-full  border-[20px] border-[#5671f5] cursor-default">
+                    <img id="peckedimg" alt="Your Pick" />
+                </div>
+            </div>
+            <div class="play-again-btn flex flex-col items-center w-48 mt-20">
+                <p class="text-4xl font-bold uppercase" id="decision">You Lose</p>
+                <button class="playagain uppercase mt-4 px-12 py-2 bg-white text-[#db2e4d] font-semibold rounded-lg hover:bg-gray-200">Play Again</button>
+            </div>
+            <div class="second-div flex flex-col items-center">
+                <p class="text-xl font-bold">The House Picked</p>
+                <div id="computerPickContainer" class="cp-loge bg-white mt-12 w-48 h-48 flex items-center justify-center rounded-full border-[20px] border-[#5671f5] cursor-default">
+                    <img id="handOptionsRendom" src="" alt="House Pick" />
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Rules Modal -->
+    <div class="rules-list fixed inset-0 h-screen w-screen bg-white bg-opacity-20 z-10 flex justify-center items-center hidden">
+        <div class="rules-inner rounded-md bg-white p-10">
+            <div class="modal__header flex justify-between items-center w-full mb-6">
+                <h1 class="text-2xl uppercase text-[#1b2a4b] font-bold">Rules</h1>
+                <button class="close-btn transition hover:bg-[#e1e4ed] p-2 rounded-full hover:border border-[#1b2a4b]">
+                    <img src="/images/icon-close.svg" alt="Close" />
+                </button>
+            </div>
+            <img src="/images/image-rules.svg" alt="Game Rules" class="w-full" />
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="btn w-full bottom-0 pb-4 pr-4 absolute">
+        <footer class="flex justify-end text-end sticky">
+            <button class="font-bold text-[#606e85] px-8 py-2 bg-gray-800 border-4 hover:bg-[#d0d1d8] border-[#606e85] text-white rounded-lg transition duration-300 ease-in-out">RULES</button>
+        </footer>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>
